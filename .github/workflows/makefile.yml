@@ -17,7 +17,7 @@ jobs:
     - name: Install dependencies
       run: |
           sudo apt update
-          sudo apt install -y aria2 libusb-1.0-0-dev clang ldd
+          sudo apt install -y aria2 libusb-1.0-0-dev clang lld
           sudo apt remove -y libssl-dev libusb-1.0-0-dev
           aria2c https://www.openssl.org/source/openssl-1.1.1q.tar.gz
           tar -zxvf openssl-1.1.1q.tar.gz
