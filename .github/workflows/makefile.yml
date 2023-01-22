@@ -17,8 +17,8 @@ jobs:
     - name: Install dependencies
       run: |
           sudo apt update
-          sudo apt install -y aria2 libusb-1.0-0-dev
-          sudo apt remove -y libssl-dev
+          sudo apt install -y aria2 libusb-1.0-0-dev clang ldd
+          sudo apt remove -y libssl-dev libusb-1.0-0-dev
           aria2c https://www.openssl.org/source/openssl-1.1.1q.tar.gz
           tar -zxvf openssl-1.1.1q.tar.gz
           cd openssl-1.1.1q
@@ -37,7 +37,7 @@ jobs:
           sudo make install
           cd ..
     - name: run make
-      run: make libusb -j$(nproc)
+      run: make libusb -j$(nproc) LDFLAGS="-L/usr/local/lib -fuse-ld=lld" CC=clang LIBS="-ldl -lusb-1.0 -pthread -lcrypto"
 
     - name: Upload artifact
       uses: actions/upload-artifact@v3.1.0
