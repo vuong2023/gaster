@@ -8,7 +8,7 @@ macos:
 	xxd -iC payload_notA9_armv7.bin payload_notA9_armv7.h
 	xxd -iC payload_handle_checkm8_request.bin payload_handle_checkm8_request.h
 	xxd -iC payload_handle_checkm8_request_armv7.bin payload_handle_checkm8_request_armv7.h
-	xcrun -sdk macosx clang -mmacosx-version-min=10.9 -Weverything gaster.c lzfse.c -o gaster -framework CoreFoundation -framework IOKit -Os
+	xcrun -sdk macosx clang -mmacosx-version-min=10.9 -arch arm64 -arch x86_64 -Weverything gaster.c lzfse.c -o gaster -framework CoreFoundation -framework IOKit -Os
 	$(RM) payload_A9.h payload_notA9.h payload_notA9_armv7.h payload_handle_checkm8_request.h payload_handle_checkm8_request_armv7.h
 
 libusb:
