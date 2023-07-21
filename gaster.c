@@ -1218,7 +1218,7 @@ checkm8_stage_patch(const usb_handle_t *handle) {
 				if(cpid == 0x8011) {
 					// Do nothing, fixes A10X hopefully
 				} 
-				else
+				else {
 					send_usb_control_request_no_data(handle, 0x21, DFU_DNLOAD, 0, 0, DFU_FILE_SUFFIX_LEN, NULL);
 					send_usb_control_request_no_data(handle, 0x21, DFU_DNLOAD, 0, 0, 0, NULL);
 				}
